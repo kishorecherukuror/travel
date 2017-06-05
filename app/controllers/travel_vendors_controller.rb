@@ -28,6 +28,7 @@ class TravelVendorsController < ApplicationController
 
     respond_to do |format|
       if @travel_vendor.save
+        UserMailer.sample_email(@travel_vendor,current_user).deliver
         format.html { redirect_to @travel_vendor, notice: 'Travel vendor was successfully created.' }
         format.json { render :show, status: :created, location: @travel_vendor }
         format.xml { render :show, status: :created, location: @travel_vendor }
