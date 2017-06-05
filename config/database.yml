@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: kishore
+  pool: 5
+  username: postgres
+  password: kishore
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: kishore
+  pool: 5
+  username: postgres
+  password: kishore
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: kishore
+  pool: 5
+  username: postgres
+  password: kishore
