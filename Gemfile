@@ -12,6 +12,12 @@ end
 gem 'rails', '~> 5.0.3'
 # Use mysql as the database for Active Record
 gem 'pg'
+gem 'bullet', group: 'development'
+gem 'rack-mini-profiler'
+gem 'rails-perftest' ,group: :benchmark
+
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -59,3 +65,4 @@ gem 'faker'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 gem "paperclip", "~> 5.0.0"
+

@@ -3,6 +3,10 @@ class TravelVendorsController < ApplicationController
 
   # GET /travel_vendors
   # GET /travel_vendors.json
+  def user_travels_list
+    @u = User.includes(:travel_vendors)
+  end
+
   def index
     @travel_vendors = TravelVendor.paginate(:page => params[:page], :per_page => 2)
   end

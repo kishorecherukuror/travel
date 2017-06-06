@@ -1,0 +1,5 @@
+<% @u.each do |t| %>
+ <% t.travel_vendors.each do |tr| %>
+    name: <%= tr.name %><br />
+ <% end %>
+<% end %>

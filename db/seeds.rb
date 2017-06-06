@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 TravelVendor.delete_all
+@u = User.last
+@u2 = User.first
 100.times do |i|
-	TravelVendor.create(:name => Faker::Name.name ,ph_no: Faker::PhoneNumber.phone_number,
+	@u.travel_vendors.create(:name => Faker::Name.name ,ph_no: Faker::PhoneNumber.phone_number,
+	email: Faker::Internet.email,url: Faker::Internet.url )	
+	@u2.travel_vendors.create(:name => Faker::Name.name ,ph_no: Faker::PhoneNumber.phone_number,
 	email: Faker::Internet.email,url: Faker::Internet.url )	
 end
+

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :travel_vendors
+  resources :travel_vendors do
+  	collection do
+  		get 'user_travels_list'
+  	end
+  end
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'welcome/index'
   root 'welcome#index'
