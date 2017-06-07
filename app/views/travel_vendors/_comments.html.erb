@@ -1,0 +1,5 @@
+<%= form_for @comment, url: {action: "create_comment"}, remote: true do |f| %>
+<p> Comment: <%= f.text_area :comment %></p>
+<%= hidden_field_tag "id", @travel_vendor.id %>
+<p> <%= f.submit "comment" %></p>
+<% end %>

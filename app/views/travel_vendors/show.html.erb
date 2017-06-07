@@ -24,3 +24,21 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+<%= link_to t('.Add Comment', :default => t("helpers.links.addcoment")),
+              comments_travel_vendor_path(@travel_vendor), :class => 'btn btn-default', remote: true  %>
+
+<div id="comments"></div>
+
+<% @travel_vendor.comments.each do |c| %>
+  <p>Comment: <%= c.comment %>
+    <%= link_to "Reply", reply_travel_vendor_path(c), remote: true %>
+    <div id="replies"></div>
+  </p>
+  <p> Replies: <% c.replies.each do |r| %>
+                <%= r.comment %>
+
+               <% end %>
+  </p>
+ 
+<% end %>

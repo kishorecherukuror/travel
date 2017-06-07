@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :travel_vendors do
   	collection do
   		get 'user_travels_list'
+      post 'create_comment'
+      post 'create_reply'
+  	end
+  	member do
+  		get 'comments'
+      get 'reply'
   	end
   end
   devise_for :users, :controllers => { registrations: 'registrations' }

@@ -1,5 +1,5 @@
 class TravelVendorsController < ApplicationController
-  before_action :set_travel_vendor, only: [:show, :edit, :update, :destroy]
+  before_action :set_travel_vendor, only: [:show, :edit, :update, :destroy,:comments]
 
   # GET /travel_vendors
   # GET /travel_vendors.json
@@ -67,10 +67,45 @@ class TravelVendorsController < ApplicationController
     end
   end
 
+  def comments
+    @comment = Comment.new
+  end
+
+  def reply
+    @comment = Comment.find params[:id]
+    @reply = @comment.replies.new
+  end
+
+  def create_reply
+    @comment = Comment.find params[:id]
+    @reply = Comment.new(comments_params)
+    if @reply.save
+      @comment.replies << @reply
+      redirect_to "/"
+    else
+      render "comment"
+    end
+  end
+
+  def create_comment
+    @comment = Comment.new(comments_params)
+    @travel_vendor = TravelVendor.find(params[:id])
+    if @comment.save!
+      @travel_vendor.comments << @comment
+      redirect_to travel_vendor_path(@travel_vendor)
+    else
+      render "comments"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_travel_vendor
       @travel_vendor = TravelVendor.find(params[:id])
+    end
+
+    def comments_params
+      params.require(:comment).permit!
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
